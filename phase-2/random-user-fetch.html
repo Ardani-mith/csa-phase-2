@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random User Fetch API</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .controls {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        input {
+            padding: 10px;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 200px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 0 5px;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        .loading {
+            text-align: center;
+            color: #666;
+            font-style: italic;
+        }
+        .user-card {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px 0;
+            background: #f9f9f9;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .user-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-info h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .user-info p {
+            margin: 5px 0;
+            color: #666;
+        }
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        .code-section {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 5px;
+        }
+        .code-section h3 {
+            margin-top: 0;
+        }
+        code {
+            background: #e9ecef;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎲 Random User Fetch API</h1>
+        
+        <div class="controls">
+            <input type="number" id="userCount" placeholder="Jumlah user (kosong = 1)" min="1" max="5000">
+            <button onclick="fetchRandomUsers()">Get Random Users</button>
+            <button onclick="clearResults()">Clear Results</button>
+        </div>
+        
+        <div id="loading" class="loading" style="display: none;">
+            Mengambil data user...
+        </div>
+        
+        <div id="error" class="error" style="display: none;"></div>
+        
+        <div id="results"></div>
+        
+        <div class="code-section">
+            <h3>📝 Cara Kerja Fetch API:</h3>
+            <p>
+                1. Function <code>get_from_url(param)</code> mengambil data dari API randomuser.me<br>
+                2. Parameter menentukan jumlah user yang diambil<br>
+                3. Menggunakan <code>async/await</code> untuk handle Promise<br>
+                4. Error handling dengan <code>try/catch</code><br>
+                5. Return data JSON yang sudah di-parse
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Implementasi fetch function sesuai kode yang diberikan user
+        async function get_from_url(param) {
+            const url = `https://randomuser.me/api/${param}`;
+            let resp = "";
+            let jsonresp = null;
+            
+            try {
+                resp = await fetch(url);
+                jsonresp = await resp.json();
+            } catch (error) {
+                console.error(error);
+                throw error; // Re-throw untuk handling di function yang memanggil
+            }
+            
+            return jsonresp;
+        }
+
+        // Function untuk fetch dan tampilkan data
+        async function fetchRandomUsers() {
+            const userCountInput = document.getElementById('userCount');
+            const loadingDiv = document.getElementById('loading');
+            const errorDiv = document.getElementById('error');
+            const resultsDiv = document.getElementById('results');
+            
+            // Clear previous results
+            errorDiv.style.display = 'none';
+            resultsDiv.innerHTML = '';
+            
+            // Show loading
+            loadingDiv.style.display = 'block';
+            
+            try {
+                // Ambil jumlah user dari input
+                const userCount = userCountInput.value;
+                const param = userCount ? `?results=${userCount}` : '';
+                
+                console.log(`Fetching from: https://randomuser.me/api/${param}`);
+                
+                // Panggil function get_from_url (seperti kode user)
+                const response = await get_from_url(param);
+                
+                console.log('Response:', response);
+                
+                // Tampilkan hasil
+                displayUsers(response.results);
+                
+            } catch (error) {
+                console.error('Error:', error);
+                errorDiv.textContent = `Error: ${error.message}`;
+                errorDiv.style.display = 'block';
+            } finally {
+                loadingDiv.style.display = 'none';
+            }
+        }
+
+        // Function untuk tampilkan user data
+        function displayUsers(users) {
+            const resultsDiv = document.getElementById('results');
+            
+            if (!users || users.length === 0) {
+                resultsDiv.innerHTML = '<p>No users found.</p>';
+                return;
+            }
+            
+            users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                
+                userCard.innerHTML = `
+                    <img src="${user.picture.large}" alt="User Photo" class="user-image">
+                    <div class="user-info">
+                        <h3>${user.name.first} ${user.name.last}</h3>
+                        <p><strong>Email:</strong> ${user.email}</p>
+                        <p><strong>Phone:</strong> ${user.phone}</p>
+                        <p><strong>Gender:</strong> ${user.gender}</p>
+                        <p><strong>Description:</strong> ${user.location.timezone.description}</p>
+                        <p><strong>Location:</strong> ${user.location.city}, ${user.location.country}</p>
+                        <p><strong>Age:</strong> ${user.dob.age} years old</p>
+                    </div>
+                `;
+                
+                resultsDiv.appendChild(userCard);
+            });
+        }
+
+        // Function untuk clear hasil
+        function clearResults() {
+            document.getElementById('results').innerHTML = '';
+            document.getElementById('error').style.display = 'none';
+            document.getElementById('userCount').value = '';
+        }
+
+        // Implementasi main function seperti kode user (untuk demo di console)
+        async function main() {
+            const resp = await get_from_url('');
+            console.log('Main function result:', resp);
+        }
+
+        // Auto-run main function saat halaman load (opsional)
+        // main();
+        
+        // Demo button untuk test main function
+        console.log('=== Demo Main Function ===');
+        console.log('Jalankan main() di console untuk test function seperti kode asli');
+    </script>
+</body>
+</html> 

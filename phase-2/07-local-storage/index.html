@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    <h1>Local Storage Demo</h1>
+    <input type="text" id="nameInput" placeholder="Masukkan nama Anda">
+    <button id="simpanBtn">Simpan Nama</button>
+    <button id="refreshBtn">Refresh</button>
+    <button id="hapusBtn">Hapus Nama</button>
+    <p>Nama Tersimpan: <span id="displayName"></span></p>
+
+    <script>
+        const nameInput = document.getElementById('nameInput');
+        const simpanBtn = document.getElementById('simpanBtn');
+        const refreshBtn = document.getElementById('refreshBtn');
+        const hapusBtn = document.getElementById('hapusBtn');
+        const displayName = document.getElementById('displayName');
+
+        // Memuat nama saat halaman dimuat
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                displayName.textContent = savedName;
+                nameInput.value = savedName; // Mengisi input jika ada data
+            }
+        });
+
+        // Menyimpan data
+        simpanBtn.addEventListener('click', () => {
+            const userName = nameInput.value;
+            if (userName) {
+                localStorage.setItem('userName', userName);
+                displayName.textContent = userName;
+                alert('Nama berhasil disimpan!');
+            } else {
+                alert('Silakan masukkan nama!');
+            }
+        });
+
+        // Memuat data
+        refreshBtn.addEventListener('click', () => {
+            const savedName = localStorage.getItem('userName');
+            if (savedName) {
+                displayName.textContent = savedName;
+                alert('Nama berhasil dimuat: ' + savedName);
+            } else {
+                displayName.textContent = 'Belum ada nama tersimpan.';
+                alert('Belum ada nama tersimpan.');
+            }
+        });
+
+        // Menghapus data
+        hapusBtn.addEventListener('click', () => {
+            localStorage.removeItem('userName');
+            displayName.textContent = '';
+            nameInput.value = '';
+            alert('Nama berhasil dihapus!');
+        });
+
+        // Contoh menyimpan objek (perlu stringify/parse)
+        // localStorage.setItem('userData', JSON.stringify({ name: 'Alice', age: 30 }));
+        // const userData = JSON.parse(localStorage.getItem('userData'));
+        // console.log(userData.name);
+    </script>
+</body>
+</html>

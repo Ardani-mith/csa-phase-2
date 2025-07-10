@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Fetch API</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        button { padding: 10px; margin: 5px; }
+        input { padding: 8px; margin: 5px; }
+        .user { border: 1px solid #ccc; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Simple Random User Fetch</h1>
+    
+    <input type="number" id="count" placeholder="Jumlah user">
+    <button onclick="getUsers()">Get Users</button>
+    <button onclick="testMain()">Test Main Function</button>
+    
+    <div id="result"></div>
+
+    <script>
+        // Function fetch sesuai kode Anda
+        async function get_from_url(param) {
+            const url = `https://randomuser.me/api/${param}`;
+            let resp = "";
+            let jsonresp = null;
+            
+            try {
+                resp = await fetch(url);
+                jsonresp = await resp.json();
+            } catch (error) {
+                console.error(error);
+            }
+            return jsonresp;
+        }
+
+        // Main function sesuai kode Anda
+        async function main() {
+            const resp = await get_from_url('');
+            console.log(resp);
+            return resp;
+        }
+
+        // Function untuk button
+        async function getUsers() {
+            const count = document.getElementById('count').value;
+            const param = count ? `?results=${count}` : '';
+            
+            document.getElementById('result').innerHTML = 'Loading...';
+            
+            const data = await get_from_url(param);
+            
+            let html = '';
+            if (data && data.results) {
+                data.results.forEach(user => {
+                    html += `
+                        <div class="user">
+                            <strong>${user.name.first} ${user.name.last}</strong><br>
+                            Email: ${user.email}<br>
+                            Location: ${user.location.city}, ${user.location.country}
+                        </div>
+                    `;
+                });
+            }
+            
+            document.getElementById('result').innerHTML = html;
+        }
+
+        // Function untuk test main
+        async function testMain() {
+            console.log('Testing main function...');
+            const result = await main();
+            alert('Check console for result!');
+        }
+    </script>
+</body>
+</html> 

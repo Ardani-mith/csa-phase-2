@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Framework (Tailwind)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div class="container mx-auto mt-20 px-4">
+        <h1 class="text-blue-600 text-4xl mb-6">Selamat Datang dengan Tailwind!</h1>
+
+        <button type="button" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mr-2">Tombol Sukses</button>
+        <button type="button" class="border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold py-2 px-4 rounded">Tombol Bahaya</button>
+
+        <div class="bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 mt-4" role="alert">
+            Ini adalah pesan informasi dari Tailwind.
+        </div>
+
+        <div class="max-w-sm rounded overflow-hidden shadow-lg mt-4">
+            <div class="px-6 py-4">
+                <h5 class="font-bold text-xl mb-2">Kartu Contoh</h5>
+                <p class="text-gray-700 text-base">Beberapa teks contoh singkat untuk membangun judul kartu dan membuat sebagian besar konten kartu.</p>
+                <a href="#" class="inline-block mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Lihat Detail</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- Latihan:
+
+// 1. Coba buat tata letak responsif sederhana menggunakan sistem Grid Tailwind (misalnya, 3 kolom di desktop, 1 kolom di mobile).
+// 2. Gunakan komponen Navbar Tailwind untuk membuat navigasi. -->

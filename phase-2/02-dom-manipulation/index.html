@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mainTitle">Selamat Datang di DOM!</h1>
+    <ul id="myList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+    </ul>
+    <button id="changeTitleBtn">Ubah Judul</button>
+    <button id="addItemBtn">Tambah Item</button>
+
+    <script>
+        // Mengakses elemen
+        const mainTitle = document.getElementById('mainTitle');
+        const myList = document.getElementById('myList');
+        const changeTitleBtn = document.getElementById('changeTitleBtn');
+        const addItemBtn = document.getElementById('addItemBtn');
+
+        // Mengubah konten
+        changeTitleBtn.addEventListener('click', function() {
+            mainTitle.textContent = 'Judul Baru Berhasil Diubah!';
+            mainTitle.classList.add('highlight'); // Menambah kelas CSS
+        });
+
+        // Menambah elemen baru
+        addItemBtn.addEventListener('click', function() {
+            const newItem = document.createElement('li'); // Membuat elemen li baru
+            newItem.textContent = 'Item Baru Ditambahkan'; // Mengatur teksnya
+            myList.appendChild(newItem); // Menambahkan ke daftar
+        });
+
+        // Menghapus item pertama
+        // myList.removeChild(myList.firstElementChild); // Contoh menghapus
+    </script>
+</body>
+</html>
+

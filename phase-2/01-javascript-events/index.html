@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Events</title>
+</head>
+<body>
+    <button id="myButton">Klik Saya!</button>
+    <p id="message"></p>
+    <button id="myButton2">Klik Aku!</button>
+    <p id="message2"></p>
+
+    <script>
+        // Mendapatkan elemen button dan paragraph
+        const myButton = document.getElementById('myButton');
+        const message = document.getElementById('message');
+        const myButton2 = document.getElementById('myButton2')
+        const message2 = document.getElementById('message2')
+
+        // Menambahkan event listener untuk 'click'
+        myButton.addEventListener('click', function() {
+            message.textContent = 'Tombol berhasil diklik!';
+            message.style.color = 'blue';
+        });
+
+        myButton2.addEventListener('click', function() {
+            message2.textContent = 'Tombol berhasil diklik!';
+            message2.style.color = 'green';
+        })
+
+        // Contoh lain: mouseover
+        // myButton.addEventListener('mouseover', function() {
+        //     myButton.style.backgroundColor = 'lightblue';
+        // });
+
+        // myButton.addEventListener('mouseout', function() {
+        //     myButton.style.backgroundColor = ''; // Hapus background color
+        // });
+    </script>
+</body>
+</html>
+
