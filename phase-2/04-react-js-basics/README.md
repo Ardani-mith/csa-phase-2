@@ -40,19 +40,19 @@ Cara paling mudah adalah dengan create-react-app (untuk project sederhana):
         );
     }
 
-function App() {
-  return (
-    <div className="App">
-      {/* Menggunakan komponen Greeting */}
-      <img src={logo} className="App-logo" alt="React Logo" />
-      <Greeting name="Dunia React" />
-      <Greeting name="Pengguna Baru" />
+    function App() {
+        return (
+            <div className="App">
+            {/* Menggunakan komponen Greeting */}
+            <img src={logo} className="App-logo" alt="React Logo" />
+            <Greeting name="Dunia React" />
+            <Greeting name="Pengguna Baru" />
 
-      {/* Menggunakan komponen Counter */}
-      <Counter />
-    </div>
-  );
-}
+            {/* Menggunakan komponen Counter */}
+            <Counter />
+            </div>
+        );
+    }
 
 ## Latihan
 
