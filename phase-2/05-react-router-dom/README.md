@@ -38,5 +38,6 @@ Lihat file `{framework}.html` untuk contoh implementasi JavaScript Events dalam 
 
 ## Latihan:
 
-1. Buat aplikasi sederhana dengan tiga halaman: Home, Products, dan Product Detail.
-2. Di halaman Products, tampilkan daftar produk. Ketika salah satu produk diklik, navigasikan ke halaman Product Detail (/products/:id) dan tampilkan detail produk berdasarkan ID yang diambil dari URL.
+1.  Buat aplikasi sederhana dengan tiga halaman: Home, Products, dan Product Detail.
+2.  Di halaman Products, tampilkan daftar produk. Ketika salah satu produk diklik, 
+    navigasikan ke halaman Product Detail (/products/:id) dan tampilkan detail produk berdasarkan ID yang diambil dari URL.

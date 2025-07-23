@@ -19,7 +19,9 @@ DOM adalah representasi terstruktur dari dokumen HTML atau XML sebagai pohon obj
 
 Lihat file `index.html` untuk contoh implementasi JavaScript Events dalam kasus nyata.
 
-<!-- Latihan:
+## Latihan:
 
-// 1. Buat sebuah daftar belanja. Tambahkan tombol untuk setiap item yang memungkinkan pengguna menghapus item dari daftar.
-// 2. Buat formulir sederhana dengan input nama. Ketika tombol submit diklik, tampilkan nama yang dimasukkan di bawah formulir. -->
+1.  Buat sebuah daftar belanja. Tambahkan tombol untuk setiap item yang memungkinkan pengguna menghapus 
+    item dari daftar.
+2.  Buat formulir sederhana dengan input nama. Ketika tombol submit diklik, 
+    tampilkan nama yang dimasukkan di bawah formulir.

@@ -28,7 +28,8 @@ JavaScript Events adalah mekanisme yang memungkinkan website merespons interaksi
 
 Lihat file `index.html` untuk contoh implementasi JavaScript Events dalam kasus nyata.
 
-<!-- Latihan:
+## Latihan:
 
-// 1. Buat input teks dan sebuah tombol. Ketika tombol diklik, tampilkan isi input teks di bawahnya.
-// 2. Buat sebuah kotak div. Ketika mouse masuk ke dalam kotak, ubah warnanya. Ketika mouse keluar, kembalikan warnanya. -->
+1. Buat input teks dan sebuah tombol. Ketika tombol diklik, tampilkan isi input teks di bawahnya.
+2. Buat sebuah kotak div. Ketika mouse masuk ke dalam kotak, ubah warnanya. Ketika mouse keluar, 
+   kembalikan warnanya.

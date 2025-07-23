@@ -56,6 +56,7 @@ Cara paling mudah adalah dengan create-react-app (untuk project sederhana):
 
 ## Latihan
 
-1. Buat komponen ProductCard yang menerima props seperti name, price, dan image. Tampilkan daftar produk menggunakan komponen ini.
-
-2. Buat komponen TodoList dengan input teks dan tombol "Tambah". Ketika tombol diklik, item baru ditambahkan ke daftar yang ditampilkan. Gunakan useState untuk mengelola daftar.
+1.  Buat komponen ProductCard yang menerima props seperti name, price, dan image. 
+    Tampilkan daftar produk menggunakan komponen ini.
+2.  Buat komponen TodoList dengan input teks dan tombol "Tambah". 
+    Ketika tombol diklik, item baru ditambahkan ke daftar yang ditampilkan. Gunakan useState untuk mengelola daftar.
